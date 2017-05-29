@@ -1,0 +1,19 @@
+PODS:
+  - RGInputBar (0.1.0):
+    - UITextView+Placeholder
+  - UITextView+Placeholder (1.2.0)
+
+DEPENDENCIES:
+  - RGInputBar (from `../../`)
+
+EXTERNAL SOURCES:
+  RGInputBar:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  RGInputBar: 4de8b553e1712918dcb47df1d7a09fc2f3bee6b5
+  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
+
+PODFILE CHECKSUM: d8eb42abae8c036d3a17930fd834c8da1e576526
+
+COCOAPODS: 1.2.0

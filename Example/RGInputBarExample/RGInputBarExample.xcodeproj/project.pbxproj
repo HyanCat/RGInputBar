@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		39A66DB1E8CA1E8302B111C6 /* Pods_RGInputBarExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B61D0413A0B35DC4ADEE1E27 /* Pods_RGInputBarExample.framework */; };
+		666FE0B21EDBD87100A0E8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666FE0B11EDBD87100A0E8E6 /* AppDelegate.swift */; };
+		666FE0B41EDBD87100A0E8E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666FE0B31EDBD87100A0E8E6 /* ViewController.swift */; };
+		666FE0B71EDBD87100A0E8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666FE0B51EDBD87100A0E8E6 /* Main.storyboard */; };
+		666FE0B91EDBD87100A0E8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 666FE0B81EDBD87100A0E8E6 /* Assets.xcassets */; };
+		666FE0BC1EDBD87100A0E8E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666FE0BA1EDBD87100A0E8E6 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		286202D42E1204A2DB209FC6 /* Pods-RGInputBarExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RGInputBarExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample.debug.xcconfig"; sourceTree = "<group>"; };
+		666FE0AE1EDBD87100A0E8E6 /* RGInputBarExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGInputBarExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		666FE0B11EDBD87100A0E8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		666FE0B31EDBD87100A0E8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		666FE0B61EDBD87100A0E8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		666FE0B81EDBD87100A0E8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		666FE0BB1EDBD87100A0E8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		666FE0BD1EDBD87100A0E8E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A35F7652E6751C2BF4F934E /* Pods-RGInputBarExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RGInputBarExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample.release.xcconfig"; sourceTree = "<group>"; };
+		B61D0413A0B35DC4ADEE1E27 /* Pods_RGInputBarExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RGInputBarExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		666FE0AB1EDBD87100A0E8E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39A66DB1E8CA1E8302B111C6 /* Pods_RGInputBarExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		666FE0A51EDBD87100A0E8E6 = {
+			isa = PBXGroup;
+			children = (
+				666FE0B01EDBD87100A0E8E6 /* RGInputBarExample */,
+				666FE0AF1EDBD87100A0E8E6 /* Products */,
+				9F55873DBFF0690A82287116 /* Pods */,
+				A2E42363A2496500B656181C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		666FE0AF1EDBD87100A0E8E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				666FE0AE1EDBD87100A0E8E6 /* RGInputBarExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		666FE0B01EDBD87100A0E8E6 /* RGInputBarExample */ = {
+			isa = PBXGroup;
+			children = (
+				666FE0B11EDBD87100A0E8E6 /* AppDelegate.swift */,
+				666FE0B31EDBD87100A0E8E6 /* ViewController.swift */,
+				666FE0B51EDBD87100A0E8E6 /* Main.storyboard */,
+				666FE0B81EDBD87100A0E8E6 /* Assets.xcassets */,
+				666FE0BA1EDBD87100A0E8E6 /* LaunchScreen.storyboard */,
+				666FE0BD1EDBD87100A0E8E6 /* Info.plist */,
+			);
+			path = RGInputBarExample;
+			sourceTree = "<group>";
+		};
+		9F55873DBFF0690A82287116 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				286202D42E1204A2DB209FC6 /* Pods-RGInputBarExample.debug.xcconfig */,
+				8A35F7652E6751C2BF4F934E /* Pods-RGInputBarExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A2E42363A2496500B656181C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B61D0413A0B35DC4ADEE1E27 /* Pods_RGInputBarExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		666FE0AD1EDBD87100A0E8E6 /* RGInputBarExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 666FE0C01EDBD87100A0E8E6 /* Build configuration list for PBXNativeTarget "RGInputBarExample" */;
+			buildPhases = (
+				AB1D2604B19F3640BC976320 /* [CP] Check Pods Manifest.lock */,
+				666FE0AA1EDBD87100A0E8E6 /* Sources */,
+				666FE0AB1EDBD87100A0E8E6 /* Frameworks */,
+				666FE0AC1EDBD87100A0E8E6 /* Resources */,
+				AF71A1027F7AB6554EDA230A /* [CP] Embed Pods Frameworks */,
+				B7FAC3294C4D5265295A914C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RGInputBarExample;
+			productName = RGInputBarExample;
+			productReference = 666FE0AE1EDBD87100A0E8E6 /* RGInputBarExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		666FE0A61EDBD87100A0E8E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = ruogoo;
+				TargetAttributes = {
+					666FE0AD1EDBD87100A0E8E6 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 666FE0A91EDBD87100A0E8E6 /* Build configuration list for PBXProject "RGInputBarExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 666FE0A51EDBD87100A0E8E6;
+			productRefGroup = 666FE0AF1EDBD87100A0E8E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				666FE0AD1EDBD87100A0E8E6 /* RGInputBarExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		666FE0AC1EDBD87100A0E8E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				666FE0BC1EDBD87100A0E8E6 /* LaunchScreen.storyboard in Resources */,
+				666FE0B91EDBD87100A0E8E6 /* Assets.xcassets in Resources */,
+				666FE0B71EDBD87100A0E8E6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AB1D2604B19F3640BC976320 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AF71A1027F7AB6554EDA230A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7FAC3294C4D5265295A914C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		666FE0AA1EDBD87100A0E8E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				666FE0B41EDBD87100A0E8E6 /* ViewController.swift in Sources */,
+				666FE0B21EDBD87100A0E8E6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		666FE0B51EDBD87100A0E8E6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				666FE0B61EDBD87100A0E8E6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		666FE0BA1EDBD87100A0E8E6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				666FE0BB1EDBD87100A0E8E6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		666FE0BE1EDBD87100A0E8E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		666FE0BF1EDBD87100A0E8E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		666FE0C11EDBD87100A0E8E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 286202D42E1204A2DB209FC6 /* Pods-RGInputBarExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RGInputBarExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruogoo.RGInputBarExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		666FE0C21EDBD87100A0E8E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A35F7652E6751C2BF4F934E /* Pods-RGInputBarExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RGInputBarExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruogoo.RGInputBarExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		666FE0A91EDBD87100A0E8E6 /* Build configuration list for PBXProject "RGInputBarExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				666FE0BE1EDBD87100A0E8E6 /* Debug */,
+				666FE0BF1EDBD87100A0E8E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		666FE0C01EDBD87100A0E8E6 /* Build configuration list for PBXNativeTarget "RGInputBarExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				666FE0C11EDBD87100A0E8E6 /* Debug */,
+				666FE0C21EDBD87100A0E8E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 666FE0A61EDBD87100A0E8E6 /* Project object */;
+}

@@ -1,15 +1,14 @@
 //
-//  HyInputView.m
-//  Pods
+//  RGInputView.m
 //
 //  Created by HyanCat on 16/4/16.
-//
+//  Copyright © 2016年 HyanCat. All rights reserved.
 //
 
-#import "HyInputView.h"
+#import "RGInputView.h"
 @import UITextView_Placeholder;
 
-@interface HyInputView ()
+@interface RGInputView () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *inputPanelView;
@@ -20,7 +19,7 @@
 
 @end
 
-@implementation HyInputView
+@implementation RGInputView
 
 - (void)dealloc
 {
@@ -44,16 +43,12 @@
 {
     [super awakeFromNib];
 
-    self.contentTextView.placeholder = @"写评论...";
-}
-
-- (NSString *)content
-{
-    return self.contentTextView.text;
+    self.contentTextView.delegate = self;
 }
 
 - (void)setContent:(NSString *)content
 {
+    _content = content;
     self.contentTextView.text = content;
 }
 
@@ -67,12 +62,14 @@
 {
     _cancelActionTitle = cancelActionTitle;
     [self.cancelButton setTitle:self.cancelActionTitle forState:UIControlStateNormal];
+    [self.cancelButton sizeToFit];
 }
 
 - (void)setConfirmActionTitle:(NSString *)confirmActionTitle
 {
     _confirmActionTitle = confirmActionTitle;
     [self.confirmButton setTitle:self.confirmActionTitle forState:UIControlStateNormal];
+    [self.confirmButton sizeToFit];
 }
 
 - (void)setReplyTipTitle:(NSString *)replyTipTitle
@@ -84,43 +81,43 @@
 
 - (void)clear
 {
-    self.contentTextView.text = @"";
+    self.content = @"";
     self.replyTipTitle = nil;
 }
 
 - (void)show
 {
     self.hidden = NO;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(hy_inputViewWillShow:)]) {
-        [self.delegate hy_inputViewWillShow:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputViewWillShow:)]) {
+        [self.delegate rg_inputViewWillShow:self];
     }
     [self.contentTextView becomeFirstResponder];
 }
 
 - (void)dismiss
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(hy_inputViewWillDismiss:)]) {
-        [self.delegate hy_inputViewWillDismiss:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputViewWillDismiss:)]) {
+        [self.delegate rg_inputViewWillDismiss:self];
     }
     [self.contentTextView resignFirstResponder];
 }
 
 - (IBAction)cancelButtonTouched:(id)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(hy_inputView:didTouchedCancelButton:)]) {
-        [self.delegate hy_inputView:self didTouchedCancelButton:sender];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputView:didTouchedCancelButton:)]) {
+        [self.delegate rg_inputView:self didTouchedCancelButton:sender];
     }
 }
 - (IBAction)confirmButtonTouched:(id)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(hy_inputView:didTouchedConfirmButton:)]) {
-        [self.delegate hy_inputView:self didTouchedConfirmButton:sender];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputView:didTouchedConfirmButton:)]) {
+        [self.delegate rg_inputView:self didTouchedConfirmButton:sender];
     }
 }
 - (IBAction)replyTipButtonTouched:(id)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(hy_inputView:didTouchedReplyTipButton:)]) {
-        [self.delegate hy_inputView:self didTouchedReplyTipButton:sender];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputView:didTouchedReplyTipButton:)]) {
+        [self.delegate rg_inputView:self didTouchedReplyTipButton:sender];
     }
 }
 
@@ -141,8 +138,8 @@
                          self.backgroundView.alpha = 0.5f;
                      }
                      completion:^(BOOL finished) {
-                         if (self.delegate && [self.delegate respondsToSelector:@selector(hy_inputViewDidShow:)]) {
-                             [self.delegate hy_inputViewDidShow:self];
+                         if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputViewDidShow:)]) {
+                             [self.delegate rg_inputViewDidShow:self];
                          }
                      }];
 }
@@ -160,10 +157,18 @@
                      }
                      completion:^(BOOL finished) {
                          self.hidden = YES;
-                         if (self.delegate && [self.delegate respondsToSelector:@selector(hy_inputViewDidDismiss:)]) {
-                             [self.delegate hy_inputViewDidDismiss:self];
+                         if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputViewDidDismiss:)]) {
+                             [self.delegate rg_inputViewDidDismiss:self];
                          }
                      }];
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if ([self.content isEqualToString:textView.text]) {
+        return;
+    }
+    self.content = textView.text;
 }
 
 @end
