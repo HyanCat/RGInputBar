@@ -43,6 +43,11 @@
 
 @implementation RGInputBarController
 
+- (void)dealloc
+{
+    [self.inputView removeObserver:self forKeyPath:@"content"];
+}
+
 - (void)loadView
 {
     RGInputBarContentView *view = [[RGInputBarContentView alloc] initWithFrame:UIScreen.mainScreen.bounds];
