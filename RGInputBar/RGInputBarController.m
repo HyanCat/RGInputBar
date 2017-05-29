@@ -170,6 +170,7 @@
 
 - (void)rg_inputView:(RGInputView *)inputView didTouchedReplyTipButton:(UIButton *)replyTipButton
 {
+    _atUserName = nil;
     inputView.replyTipTitle = nil;
 }
 
