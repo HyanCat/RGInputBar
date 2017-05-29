@@ -88,36 +88,36 @@
 - (void)show
 {
     self.hidden = NO;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputViewWillShow:)]) {
-        [self.delegate rg_inputViewWillShow:self];
+    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputViewWillShow:)]) {
+        [self.inputDelegate rg_inputViewWillShow:self];
     }
     [self.contentTextView becomeFirstResponder];
 }
 
 - (void)dismiss
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputViewWillDismiss:)]) {
-        [self.delegate rg_inputViewWillDismiss:self];
+    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputViewWillDismiss:)]) {
+        [self.inputDelegate rg_inputViewWillDismiss:self];
     }
     [self.contentTextView resignFirstResponder];
 }
 
 - (IBAction)cancelButtonTouched:(id)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputView:didTouchedCancelButton:)]) {
-        [self.delegate rg_inputView:self didTouchedCancelButton:sender];
+    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputView:didTouchedCancelButton:)]) {
+        [self.inputDelegate rg_inputView:self didTouchedCancelButton:sender];
     }
 }
 - (IBAction)confirmButtonTouched:(id)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputView:didTouchedConfirmButton:)]) {
-        [self.delegate rg_inputView:self didTouchedConfirmButton:sender];
+    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputView:didTouchedConfirmButton:)]) {
+        [self.inputDelegate rg_inputView:self didTouchedConfirmButton:sender];
     }
 }
 - (IBAction)replyTipButtonTouched:(id)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputView:didTouchedReplyTipButton:)]) {
-        [self.delegate rg_inputView:self didTouchedReplyTipButton:sender];
+    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputView:didTouchedReplyTipButton:)]) {
+        [self.inputDelegate rg_inputView:self didTouchedReplyTipButton:sender];
     }
 }
 
@@ -138,8 +138,8 @@
                          self.backgroundView.alpha = 0.5f;
                      }
                      completion:^(BOOL finished) {
-                         if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputViewDidShow:)]) {
-                             [self.delegate rg_inputViewDidShow:self];
+                         if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputViewDidShow:)]) {
+                             [self.inputDelegate rg_inputViewDidShow:self];
                          }
                      }];
 }
@@ -157,8 +157,8 @@
                      }
                      completion:^(BOOL finished) {
                          self.hidden = YES;
-                         if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputViewDidDismiss:)]) {
-                             [self.delegate rg_inputViewDidDismiss:self];
+                         if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputViewDidDismiss:)]) {
+                             [self.inputDelegate rg_inputViewDidDismiss:self];
                          }
                      }];
 }

@@ -133,7 +133,7 @@
                                                 owner:self
                                               options:nil].firstObject;
         inputView.frame = self.view.bounds;
-        inputView.delegate = self;
+        inputView.inputDelegate = self;
         _inputView = inputView;
     }
     return _inputView;

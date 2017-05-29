@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RGInputView : UIView
 
-@property (nonatomic, weak, nullable) id <RGInputViewDelegate> delegate;
+@property (nonatomic, weak, nullable) id <RGInputViewDelegate> inputDelegate;
 
 @property (nonatomic, copy, nullable) NSString *content;
 @property (nonatomic, copy, nullable) NSString *placeholder;
