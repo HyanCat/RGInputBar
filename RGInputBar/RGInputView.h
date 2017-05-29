@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)rg_inputViewDidDismiss:(RGInputView *)inputView;
 
 - (void)rg_inputView:(RGInputView *)inputView didTouchedCancelButton:(UIButton *)cancelButton;
-- (void)rg_inputView:(RGInputView *)inputView didTouchedConfirmButton:(UIButton *)confirmButton;
+- (void)rg_inputView:(RGInputView *)inputView didTouchedSendButton:(UIButton *)sendButton;
 - (void)rg_inputView:(RGInputView *)inputView didTouchedReplyTipButton:(UIButton *)replyTipButton;
 
 @end
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *placeholder;
 
 @property (nonatomic, copy, nullable) NSString *cancelActionTitle;
-@property (nonatomic, copy, nullable) NSString *confirmActionTitle;
+@property (nonatomic, copy, nullable) NSString *sendActionTitle;
 @property (nonatomic, copy, nullable) NSString *replyTipTitle;
 
 - (void)clear;

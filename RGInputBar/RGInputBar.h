@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 
-- (void)rg_inputBar:(RGInputBar *)inputBar didTouchedInputBar:(NSSet<UITouch *> *)touches;
+- (void)rg_inputBarDidTouched:(RGInputBar *)inputBar;
 - (void)rg_inputBar:(RGInputBar *)inputBar didTouchedSendButton:(UIButton *)sendButton;
 
 @end

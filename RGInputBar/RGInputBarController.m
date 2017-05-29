@@ -144,15 +144,15 @@
     return _inputView;
 }
 
-- (void)rg_inputBar:(RGInputBar *)inputBar didTouchedInputBar:(NSSet<UITouch *> *)touches
+- (void)rg_inputBarDidTouched:(RGInputBar *)inputBar
 {
     [self.inputView show];
 }
 
 - (void)rg_inputBar:(RGInputBar *)inputBar didTouchedSendButton:(UIButton *)sendButton
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputBarController:didConfirmInput:)]) {
-        [self.delegate rg_inputBarController:self didConfirmInput:self.content];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputBarController:didSendInput:)]) {
+        [self.delegate rg_inputBarController:self didSendInput:self.content];
     }
 }
 
@@ -161,10 +161,10 @@
     [inputView dismiss];
 }
 
-- (void)rg_inputView:(RGInputView *)inputView didTouchedConfirmButton:(UIButton *)confirmButton
+- (void)rg_inputView:(RGInputView *)inputView didTouchedSendButton:(nonnull UIButton *)sendButton
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputBarController:didConfirmInput:)]) {
-        [self.delegate rg_inputBarController:self didConfirmInput:self.content];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputBarController:didSendInput:)]) {
+        [self.delegate rg_inputBarController:self didSendInput:self.content];
     }
 }
 

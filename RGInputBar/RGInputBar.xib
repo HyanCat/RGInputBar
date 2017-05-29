@@ -23,7 +23,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
-                    <state key="normal" image="icon_pencil.png"/>
+                    <connections>
+                        <action selector="iconButtonTouched:" destination="Zuv-Ad-wK4" eventType="touchUpInside" id="FD5-4q-EfO"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ao-dc-66z" userLabel="SendButton">
                     <rect key="frame" x="546" y="15" width="44" height="44"/>
@@ -68,7 +70,4 @@
             <point key="canvasLocation" x="346" y="322"/>
         </view>
     </objects>
-    <resources>
-        <image name="icon_pencil.png" width="24" height="24"/>
-    </resources>
 </document>

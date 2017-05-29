@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *inputPanelView;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-@property (weak, nonatomic) IBOutlet UIButton *confirmButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIButton *replyTipButton;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 
@@ -65,11 +65,11 @@
     [self.cancelButton sizeToFit];
 }
 
-- (void)setConfirmActionTitle:(NSString *)confirmActionTitle
+- (void)setSendActionTitle:(NSString *)sendActionTitle
 {
-    _confirmActionTitle = confirmActionTitle;
-    [self.confirmButton setTitle:self.confirmActionTitle forState:UIControlStateNormal];
-    [self.confirmButton sizeToFit];
+    _sendActionTitle = sendActionTitle;
+    [self.sendButton setTitle:self.sendActionTitle forState:UIControlStateNormal];
+    [self.sendButton sizeToFit];
 }
 
 - (void)setReplyTipTitle:(NSString *)replyTipTitle
@@ -108,10 +108,10 @@
         [self.inputDelegate rg_inputView:self didTouchedCancelButton:sender];
     }
 }
-- (IBAction)confirmButtonTouched:(id)sender
+- (IBAction)sendButtonTouched:(id)sender
 {
-    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputView:didTouchedConfirmButton:)]) {
-        [self.inputDelegate rg_inputView:self didTouchedConfirmButton:sender];
+    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputView:didTouchedSendButton:)]) {
+        [self.inputDelegate rg_inputView:self didTouchedSendButton:sender];
     }
 }
 - (IBAction)replyTipButtonTouched:(id)sender

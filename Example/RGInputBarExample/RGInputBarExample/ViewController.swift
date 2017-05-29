@@ -25,7 +25,7 @@ class ViewController: UIViewController, RGInputBarControllerDelegate {
         _inputBarController.atUserName = "@xiaoming"
     }
 
-    func rg_inputBarController(_ controller: RGInputBarController, didConfirmInput content: String?) {
+    func rg_inputBarController(_ controller: RGInputBarController, didSendInput content: String?) {
         if let content = content {
             print("confirm: \(content)")
         } else {

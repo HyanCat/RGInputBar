@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol RGInputBarControllerDelegate <NSObject>
 
 @optional
-- (void)rg_inputBarController:(RGInputBarController *)controller didConfirmInput:(NSString  * _Nullable)content;
+- (void)rg_inputBarController:(RGInputBarController *)controller didSendInput:(NSString  * _Nullable)content;
 
 @end
 

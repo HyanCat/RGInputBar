@@ -54,6 +54,13 @@
     [self.sendButton setTitle:self.actionItemTitle forState:UIControlStateNormal];
 }
 
+- (IBAction)iconButtonTouched:(id)sender
+{
+    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBarDidTouched:)]) {
+        [self.inputDelegate rg_inputBarDidTouched:self];
+    }
+}
+
 - (IBAction)sendButtonTouched:(id)sender
 {
     if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBar:didTouchedSendButton:)]) {
@@ -64,8 +71,8 @@
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBar:didTouchedInputBar:)]) {
-        [self.inputDelegate rg_inputBar:self didTouchedInputBar:touches];
+    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBarDidTouched:)]) {
+        [self.inputDelegate rg_inputBarDidTouched:self];
     }
 }
 
