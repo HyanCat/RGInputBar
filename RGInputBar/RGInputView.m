@@ -81,7 +81,7 @@
 
 - (void)clear
 {
-    self.content = @"";
+    self.content = nil;
     self.replyTipTitle = nil;
 }
 

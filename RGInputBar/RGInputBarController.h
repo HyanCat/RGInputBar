@@ -9,12 +9,25 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class RGInputBarController;
+@protocol RGInputBarControllerDelegate <NSObject>
+
+@optional
+- (void)rg_inputBarController:(RGInputBarController *)controller didConfirmInput:(NSString  * _Nullable)content;
+
+@end
+
 @class RGInputBar;
 @class RGInputView;
 @interface RGInputBarController : UIViewController
 
 @property (nonatomic, weak, readonly) RGInputBar *inputBar;
 @property (nonatomic, weak, readonly) RGInputView *inputView;
+
+@property (nonatomic, copy, nullable) NSString *content;
+@property (nonatomic, copy, nullable) NSString *atUserName;
+@property (nonatomic, assign) BOOL automaticallyShowInputViewWhenAtUser;    // default YES
+@property (nonatomic, weak) id <RGInputBarControllerDelegate> delegate;
 
 @end
 

@@ -29,12 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak, nullable) id <RGInputViewDelegate> delegate;
 
-@property (nonatomic, copy) NSString *content;
-@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, copy, nullable) NSString *content;
+@property (nonatomic, copy, nullable) NSString *placeholder;
 
-@property (nonatomic, copy) NSString *cancelActionTitle;
-@property (nonatomic, copy) NSString *confirmActionTitle;
-@property (nonatomic, copy) NSString *replyTipTitle;
+@property (nonatomic, copy, nullable) NSString *cancelActionTitle;
+@property (nonatomic, copy, nullable) NSString *confirmActionTitle;
+@property (nonatomic, copy, nullable) NSString *replyTipTitle;
 
 - (void)clear;
 

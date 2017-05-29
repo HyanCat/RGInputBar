@@ -9,19 +9,50 @@
 #import "RGInputBar.h"
 #import "RGInputView.h"
 
+@interface RGInputBarContentView : UIView
+
+@end
+
+@implementation RGInputBarContentView
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    // Pass the hit event to others if no view handle it.
+    UIView *hitView = [super hitTest:point withEvent:event];
+    if (hitView == self) {
+        return nil;
+    }
+    return hitView;
+}
+
+@end
+
 @interface RGInputBarController () <RGInputBarDelegate, RGInputViewDelegate>
 
+/**
+ * Input bar is used for output.
+ */
 @property (nonatomic, weak, readwrite) RGInputBar *inputBar;
+
+/**
+ * Input view is used for input.
+ */
 @property (nonatomic, weak, readwrite) RGInputView *inputView;
 
 @end
 
 @implementation RGInputBarController
 
+- (void)loadView
+{
+    RGInputBarContentView *view = [[RGInputBarContentView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.view = view;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    _automaticallyShowInputViewWhenAtUser = YES;
 
     [self.view addSubview:self.inputBar];
     [self.view addSubview:self.inputView];
@@ -30,6 +61,11 @@
            forKeyPath:@"content"
               options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
               context:nil];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.parentViewController touchesBegan:touches withEvent:event];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
@@ -47,9 +83,25 @@
     }
 }
 
+- (void)setContent:(NSString *)content
+{
+    _content = content;
+    self.inputView.content = _content;
+}
+
+- (void)setAtUserName:(NSString *)atUserName
+{
+    _atUserName = atUserName;
+    self.inputView.replyTipTitle = _atUserName;
+    if (self.automaticallyShowInputViewWhenAtUser && _atUserName && _atUserName.length > 0) {
+        [self.inputView show];
+    }
+}
+
 - (void)updateContent
 {
     self.inputBar.content = self.inputView.content;
+    _content = self.inputBar.content;
 }
 
 - (RGInputBar *)inputBar
@@ -94,7 +146,9 @@
 
 - (void)rg_inputBar:(RGInputBar *)inputBar didTouchedSendButton:(UIButton *)sendButton
 {
-
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputBarController:didConfirmInput:)]) {
+        [self.delegate rg_inputBarController:self didConfirmInput:self.content];
+    }
 }
 
 - (void)rg_inputView:(RGInputView *)inputView didTouchedCancelButton:(UIButton *)cancelButton
@@ -104,12 +158,14 @@
 
 - (void)rg_inputView:(RGInputView *)inputView didTouchedConfirmButton:(UIButton *)confirmButton
 {
-
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputBarController:didConfirmInput:)]) {
+        [self.delegate rg_inputBarController:self didConfirmInput:self.content];
+    }
 }
 
 - (void)rg_inputView:(RGInputView *)inputView didTouchedReplyTipButton:(UIButton *)replyTipButton
 {
-
+    inputView.replyTipTitle = nil;
 }
 
 @end
