@@ -33,15 +33,13 @@
 - (void)setPlaceholder:(NSString *)placeholder
 {
     _placeholder = placeholder;
-
-    [self _checkPlaceholder];
+    self.textView.placeholder = _placeholder;
 }
 
 - (void)setContent:(NSString *)content
 {
     _content = content;
-
-    [self _checkPlaceholder];
+    self.textView.text = _content;
 }
 
 - (void)setIcon:(UIImage *)icon
@@ -68,18 +66,6 @@
     [super touchesEnded:touches withEvent:event];
     if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBar:didTouchedInputBar:)]) {
         [self.inputDelegate rg_inputBar:self didTouchedInputBar:touches];
-    }
-}
-
-- (void)_checkPlaceholder
-{
-    if (!self.content || self.content.length == 0) {
-        self.textView.text = self.placeholder;
-        self.placeholding = YES;
-    }
-    else {
-        self.textView.text = _content;
-        self.placeholding = NO;
     }
 }
 
