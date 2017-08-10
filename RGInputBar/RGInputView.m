@@ -49,7 +49,10 @@
 - (void)setContent:(NSString *)content
 {
     _content = content;
-    self.contentTextView.text = content;
+
+    if (![self.contentTextView.text isEqualToString:content]) {
+        self.contentTextView.text = content;
+    }
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
@@ -165,9 +168,6 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    if ([self.content isEqualToString:textView.text]) {
-        return;
-    }
     self.content = textView.text;
 }
 

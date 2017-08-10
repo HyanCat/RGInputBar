@@ -42,6 +42,7 @@
 @end
 
 @implementation RGInputBarController
+@dynamic content;
 
 - (void)dealloc
 {
@@ -63,9 +64,9 @@
     [self.view addSubview:self.inputView];
 
     [self.inputView addObserver:self
-           forKeyPath:@"content"
-              options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-              context:nil];
+                     forKeyPath:@"content"
+                        options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+                        context:nil];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -90,8 +91,12 @@
 
 - (void)setContent:(NSString *)content
 {
-    _content = content;
-    self.inputView.content = _content;
+    self.inputView.content = content;
+}
+
+- (NSString *)content
+{
+    return self.inputView.content;
 }
 
 - (void)setAtUserName:(NSString *)atUserName
@@ -106,7 +111,6 @@
 - (void)updateContent
 {
     self.inputBar.content = self.inputView.content;
-    _content = self.inputBar.content;
 }
 
 - (RGInputBar *)inputBar
