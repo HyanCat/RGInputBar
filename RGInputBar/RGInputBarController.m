@@ -9,6 +9,8 @@
 #import "RGInputBar.h"
 #import "RGInputView.h"
 
+#define iOS_11_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.f)
+
 @interface RGInputBarContentView : UIView
 
 @end
@@ -62,6 +64,52 @@
 
     [self.view addSubview:self.inputBar];
     [self.view addSubview:self.inputView];
+
+
+    [self.inputBar setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSMutableArray <NSLayoutConstraint *> *constraints = [NSMutableArray arrayWithCapacity:4];
+
+    if (iOS_11_OR_LATER) {
+        [constraints addObject: [NSLayoutConstraint constraintWithItem:self.inputBar
+                                                             attribute:NSLayoutAttributeBottom
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.view.safeAreaLayoutGuide
+                                                             attribute:NSLayoutAttributeBottom
+                                                            multiplier:1.0
+                                                              constant:0]];
+    } else {
+        [constraints addObject: [NSLayoutConstraint constraintWithItem:self.inputBar
+                                                             attribute:NSLayoutAttributeBottom
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.view
+                                                             attribute:NSLayoutAttributeBottom
+                                                            multiplier:1.0
+                                                              constant:0]];
+    }
+    [constraints addObjectsFromArray:@[
+                                       [NSLayoutConstraint constraintWithItem:self.inputBar
+                                                                    attribute:NSLayoutAttributeLeading
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.view
+                                                                    attribute:NSLayoutAttributeLeading
+                                                                   multiplier:1.0
+                                                                     constant:0],
+                                       [NSLayoutConstraint constraintWithItem:self.inputBar
+                                                                    attribute:NSLayoutAttributeTrailing
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.view
+                                                                    attribute:NSLayoutAttributeTrailing
+                                                                   multiplier:1.0
+                                                                     constant:0],
+                                       [NSLayoutConstraint constraintWithItem:self.inputBar
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                   multiplier:1.0
+                                                                     constant:49.f],
+                                       ]];
+    [self.view addConstraints:constraints.copy];
 
     [self.inputView addObserver:self
                      forKeyPath:@"content"
@@ -120,10 +168,6 @@
         RGInputBar *inputBar = [bundle loadNibNamed:NSStringFromClass(RGInputBar.class)
                                               owner:self
                                             options:nil].firstObject;
-        inputBar.frame = CGRectMake(0,
-                                    self.view.bounds.size.height-49,
-                                    self.view.bounds.size.width,
-                                    49);
         inputBar.icon = [UIImage imageWithContentsOfFile:[[NSBundle bundleWithPath:[bundle pathForResource:@"RGInputBar"
                                                                                                     ofType:@"bundle"]]
                                                           pathForResource:@"icon_pencil"
