@@ -19,17 +19,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content here.." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zQ-6k-Je9">
-                            <rect key="frame" x="0.0" y="0.0" width="323" height="49"/>
+                            <rect key="frame" x="0.0" y="0.0" width="307" height="49"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ao-dc-66z" userLabel="SendButton">
-                            <rect key="frame" x="331" y="0.0" width="44" height="49"/>
+                            <rect key="frame" x="315" y="0.0" width="60" height="49"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="44" id="43d-bd-E9y"/>
+                                <constraint firstAttribute="width" constant="60" id="43d-bd-E9y"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Send"/>
                             <connections>
                                 <action selector="sendButtonTouched:" destination="Zuv-Ad-wK4" eventType="touchUpInside" id="Enr-YS-V7u"/>
