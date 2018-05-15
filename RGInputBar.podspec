@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.author           = { "HyanCat" => "hyancat@live.cn" }
   s.source           = { :git => "https://github.com/HyanCat/RGInputBar.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '9.0'
   s.requires_arc = true
   s.dependency  'UITextView+Placeholder'
 

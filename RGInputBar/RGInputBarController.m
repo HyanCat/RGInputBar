@@ -168,10 +168,6 @@
         RGInputBar *inputBar = [bundle loadNibNamed:NSStringFromClass(RGInputBar.class)
                                               owner:self
                                             options:nil].firstObject;
-        inputBar.icon = [UIImage imageWithContentsOfFile:[[NSBundle bundleWithPath:[bundle pathForResource:@"RGInputBar"
-                                                                                                    ofType:@"bundle"]]
-                                                          pathForResource:@"icon_pencil"
-                                                          ofType:@"png"]];
         inputBar.inputDelegate = self;
         _inputBar = inputBar;
     }

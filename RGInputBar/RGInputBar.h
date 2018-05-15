@@ -11,22 +11,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class RGInputBar;
 
+/**
+ The delegate protocol for RGInputBar
+ */
 @protocol RGInputBarDelegate <NSObject>
 
 @optional
 
+/**
+ When the input bar main area did touched.
+
+ @param inputBar The InputBar target.
+ */
 - (void)rg_inputBarDidTouched:(RGInputBar *)inputBar;
+
+/**
+ When the icons did touched.
+
+ @param inputBar The InputBar target.
+ @param index The index which icon did touched.
+ */
+- (void)rg_inputBar:(RGInputBar *)inputBar didTouchedIconAtIndex:(NSUInteger)index;
+
+/**
+ When the send button did touched.
+
+ @param inputBar The InputBar target.
+ @param sendButton The send button.
+ */
 - (void)rg_inputBar:(RGInputBar *)inputBar didTouchedSendButton:(UIButton *)sendButton;
 
 @end
 
+/**
+ The input bar view.
+ */
 @interface RGInputBar : UIView
 
-@property (nonatomic, strong) UIImage *icon;
+/**
+ Icons array.
+ A simple pencil icon will be place at first by default.
+ */
+@property (nonatomic, copy) NSArray <UIImage *> *icons;
 @property (nonatomic, copy) NSString *actionItemTitle;
-@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *textColor UI_APPEARANCE_SELECTOR;
 
-@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, copy) NSString *placeholder UI_APPEARANCE_SELECTOR;
 @property (nonatomic, copy) NSString *content;
 
 @property (nonatomic, weak, nullable) id <RGInputBarDelegate> inputDelegate;

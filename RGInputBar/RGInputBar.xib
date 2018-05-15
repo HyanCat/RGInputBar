@@ -1,73 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="Zuv-Ad-wK4" userLabel="RG Input Bar" customClass="RGInputBar">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBb-A4-r4i" userLabel="IconButton">
-                    <rect key="frame" x="10" y="15.5" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Rp7-Nd-6Ia"/>
-                        <constraint firstAttribute="width" constant="44" id="lB4-Ff-Shv"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
-                    <connections>
-                        <action selector="iconButtonTouched:" destination="Zuv-Ad-wK4" eventType="touchUpInside" id="FD5-4q-EfO"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ao-dc-66z" userLabel="SendButton">
-                    <rect key="frame" x="546" y="15" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Epu-UU-Fmo"/>
-                        <constraint firstAttribute="width" constant="44" id="znM-IU-Se4"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="Send"/>
-                    <connections>
-                        <action selector="sendButtonTouched:" destination="Zuv-Ad-wK4" eventType="touchUpInside" id="Enr-YS-V7u"/>
-                    </connections>
-                </button>
-                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mu-yn-KMr">
-                    <rect key="frame" x="64" y="8" width="472" height="58"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Input content ..."/>
-                    </userDefinedRuntimeAttributes>
-                </textView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BYt-Qd-Vgg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content here.." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zQ-6k-Je9">
+                            <rect key="frame" x="0.0" y="0.0" width="323" height="49"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ao-dc-66z" userLabel="SendButton">
+                            <rect key="frame" x="331" y="0.0" width="44" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="43d-bd-E9y"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Send"/>
+                            <connections>
+                                <action selector="sendButtonTouched:" destination="Zuv-Ad-wK4" eventType="touchUpInside" id="Enr-YS-V7u"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="DBb-A4-r4i" firstAttribute="leading" secondItem="Zuv-Ad-wK4" secondAttribute="leading" constant="10" id="3HI-j1-W4v"/>
-                <constraint firstItem="DBb-A4-r4i" firstAttribute="centerY" secondItem="Zuv-Ad-wK4" secondAttribute="centerY" id="725-Zh-wHG"/>
-                <constraint firstItem="6Mu-yn-KMr" firstAttribute="centerY" secondItem="Zuv-Ad-wK4" secondAttribute="centerY" id="8JY-xr-IWh"/>
-                <constraint firstItem="6Mu-yn-KMr" firstAttribute="leading" secondItem="DBb-A4-r4i" secondAttribute="trailing" constant="10" id="8VY-hK-tQ7"/>
-                <constraint firstItem="6Mu-yn-KMr" firstAttribute="trailing" secondItem="2ao-dc-66z" secondAttribute="leading" constant="-10" id="96z-27-iaQ"/>
-                <constraint firstItem="2ao-dc-66z" firstAttribute="centerY" secondItem="Zuv-Ad-wK4" secondAttribute="centerY" id="aJH-Fl-uLA"/>
-                <constraint firstItem="6Mu-yn-KMr" firstAttribute="top" secondItem="Zuv-Ad-wK4" secondAttribute="top" constant="8" id="sir-Xp-5gW"/>
-                <constraint firstItem="2ao-dc-66z" firstAttribute="trailing" secondItem="Zuv-Ad-wK4" secondAttribute="trailing" constant="-10" id="z7w-dp-u6J"/>
+                <constraint firstItem="BYt-Qd-Vgg" firstAttribute="leading" secondItem="Zuv-Ad-wK4" secondAttribute="leading" id="Dra-pk-Bax"/>
+                <constraint firstAttribute="bottom" secondItem="BYt-Qd-Vgg" secondAttribute="bottom" id="IQv-RE-5IE"/>
+                <constraint firstItem="BYt-Qd-Vgg" firstAttribute="top" secondItem="Zuv-Ad-wK4" secondAttribute="top" id="YW1-l0-ecV"/>
+                <constraint firstAttribute="trailing" secondItem="BYt-Qd-Vgg" secondAttribute="trailing" id="rNc-Yw-bDL"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="iconButton" destination="DBb-A4-r4i" id="jAw-dX-wbX"/>
-                <outlet property="sendButton" destination="2ao-dc-66z" id="7CI-UA-Axx"/>
-                <outlet property="textView" destination="6Mu-yn-KMr" id="1CT-av-hgg"/>
+                <outlet property="sendButton" destination="2ao-dc-66z" id="aEY-Wv-lDF"/>
+                <outlet property="stackView" destination="BYt-Qd-Vgg" id="bhA-tk-76A"/>
+                <outlet property="textLabel" destination="3zQ-6k-Je9" id="fxB-Op-Mbe"/>
             </connections>
-            <point key="canvasLocation" x="346" y="322"/>
+            <point key="canvasLocation" x="379" y="321"/>
         </view>
     </objects>
 </document>
