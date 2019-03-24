@@ -6,45 +6,128 @@
 //
 
 #import "RGInputBar.h"
+#import <Masonry/Masonry.h>
+#import "RGRoundedTextLabel.h"
 
 #define RGINPUTBAR_ICON_BUTTON_TAG 1800
 
+@interface _RGActionsView : UIView
+
+@end
+
+@implementation _RGActionsView
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    __block CGPoint center = CGPointMake(22, self.bounds.size.height/2);
+    [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.center = center;
+        center.x += obj.bounds.size.width;
+    }];
+
+    [self invalidateIntrinsicContentSize];
+}
+
+- (CGSize)intrinsicContentSize
+{
+    __block CGRect rect = CGRectZero;
+    [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        rect = CGRectUnion(rect, obj.frame);
+    }];
+    return rect.size;
+}
+
+@end
+
 @interface RGInputBar ()
 
-@property (weak, nonatomic) IBOutlet UIStackView *stackView;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIVisualEffectView *blurView;
 
-@property (nonatomic, strong) UIButton *defaultIconButton;
+@property (nonatomic, strong) UIButton *sendButton;
+@property (nonatomic, strong) UIBarButtonItem *defaultIconButton;
+
+@property (nonatomic, strong) RGRoundedTextLabel *textLabel;
+@property (nonatomic, strong) _RGActionsView *actionsView;
 
 @end
 
 @implementation RGInputBar
 
-- (void)awakeFromNib
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    [super awakeFromNib];
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupView];
+    }
+    return self;
+}
 
-    self.layer.shadowOffset = CGSizeMake(0, -2.f);
-    self.layer.shadowColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5].CGColor;
-    self.layer.shadowRadius = 2.f;
-    self.layer.shadowOpacity = 1.0f;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setupView];
+    }
+    return self;
+}
 
-    [self makeDefaultIconButton];
+- (void)setupView
+{
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    effectView.frame = self.bounds;
+    effectView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    [self addSubview:effectView];
+
+    UIView *contentView = [[UIView alloc] init];
+    [self addSubview:contentView];
+    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(0);
+        make.height.mas_equalTo(49);
+        if (@available(iOS 11.0, *)) {
+            make.bottom.equalTo(self.mas_safeAreaLayoutGuideBottom);
+        } else {
+            make.bottom.mas_equalTo(0);
+        }
+    }];
+    self.contentView = contentView;
+
+    RGRoundedTextLabel *textLabel = [[RGRoundedTextLabel alloc] init];
+    textLabel.backgroundColor = [UIColor colorWithRed:216/225.f green:216/225.f blue:216/225.f alpha:1];
+    [self.contentView addSubview:textLabel];
+    [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(16);
+        make.centerY.mas_equalTo(0);
+        make.height.mas_equalTo(32);
+    }];
+    self.textLabel = textLabel;
+
+    _RGActionsView *actionsView = [[_RGActionsView alloc] init];
+    [self.contentView addSubview:actionsView];
+    [actionsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(textLabel.mas_right).offset(8);
+        make.right.mas_equalTo(-8);
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
+    self.actionsView = actionsView;
+
+    [self.actionsView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+
+    self.textLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textLabelDidTapped:)];
+    [self.textLabel addGestureRecognizer:tapGesture];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
     _placeholder = placeholder;
 
-    [self updatePlaceholderAndContent];
-}
-
-- (void)setContent:(NSString *)content
-{
-    _content = content;
-
-    [self updatePlaceholderAndContent];
+    self.textLabel.text = placeholder;
 }
 
 - (void)setTextColor:(UIColor *)textColor
@@ -56,42 +139,24 @@
 {
     _icons = icons;
 
-    NSArray *subviews = self.stackView.arrangedSubviews.copy;
-    [subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.tag == RGINPUTBAR_ICON_BUTTON_TAG + idx) {
-            [self.stackView removeArrangedSubview:obj];
-        }
+    [self.actionsView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
     }];
 
     [icons enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.tag = RGINPUTBAR_ICON_BUTTON_TAG + idx;
-        [button addTarget:self action:@selector(iconButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
-        [button setImage:obj forState:UIControlStateNormal];
-        [self.stackView insertArrangedSubview:button atIndex:idx];
-        [[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:0 constant:44] setActive:YES];
+        UIButton *item = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [item setImage:obj forState:UIControlStateNormal];
+        [item addTarget:self action:@selector(iconButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+        item.tag = RGINPUTBAR_ICON_BUTTON_TAG + idx;
+        [self.actionsView addSubview:item];
     }];
 }
 
 - (void)setActionItemTitle:(NSString *)actionItemTitle
 {
     _actionItemTitle = actionItemTitle;
-    [self.sendButton setTitle:self.actionItemTitle forState:UIControlStateNormal];
-}
 
-- (void)makeDefaultIconButton
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.tag = RGINPUTBAR_ICON_BUTTON_TAG;
-    [button addTarget:self action:@selector(iconButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
-    NSBundle *bundle = [NSBundle bundleForClass:[RGInputBar class]];
-    NSBundle *resource = [NSBundle bundleWithURL:[bundle URLForResource:@"RGInputBar" withExtension:@"bundle"]];
-    UIImage *icon = [UIImage imageWithContentsOfFile:[resource pathForResource:@"icon_pencil" ofType:@"png"]];
-    [button setImage:icon forState:UIControlStateNormal];
-
-    self.defaultIconButton = button;
-    [self.stackView insertArrangedSubview:self.defaultIconButton atIndex:0];
-    [[NSLayoutConstraint constraintWithItem:self.defaultIconButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:0 constant:44] setActive:YES];
+    [self.sendButton setTitle:actionItemTitle forState:UIControlStateNormal];
 }
 
 - (void)iconButtonTouched:(UIButton *)sender
@@ -102,27 +167,10 @@
     }
 }
 
-- (IBAction)sendButtonTouched:(id)sender
+- (void)textLabelDidTapped:(UITapGestureRecognizer *)tapGesture
 {
-    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBar:didTouchedSendButton:)]) {
-        [self.inputDelegate rg_inputBar:self didTouchedSendButton:sender];
-    }
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [super touchesEnded:touches withEvent:event];
     if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBarDidTouched:)]) {
         [self.inputDelegate rg_inputBarDidTouched:self];
-    }
-}
-
-- (void)updatePlaceholderAndContent
-{
-    if ([self.content length] > 0) {
-        self.textLabel.text = self.content;
-    } else {
-        self.textLabel.text = self.placeholder;
     }
 }
 

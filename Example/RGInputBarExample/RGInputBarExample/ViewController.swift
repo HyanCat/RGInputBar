@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RGInputBar
 
 class ViewController: UIViewController, RGInputBarControllerDelegate {
 
@@ -19,6 +18,7 @@ class ViewController: UIViewController, RGInputBarControllerDelegate {
         self.view.addSubview(_inputBarController.view)
 
         _inputBarController.delegate = self
+        _inputBarController.inputBar?.icons = [UIImage(named: "gift")!, UIImage(named: "like")!];
     }
 
     @IBAction func atButtonTouched(_ sender: Any) {

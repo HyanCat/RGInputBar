@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39A66DB1E8CA1E8302B111C6 /* Pods_RGInputBarExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B61D0413A0B35DC4ADEE1E27 /* Pods_RGInputBarExample.framework */; };
 		666FE0B21EDBD87100A0E8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666FE0B11EDBD87100A0E8E6 /* AppDelegate.swift */; };
 		666FE0B41EDBD87100A0E8E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666FE0B31EDBD87100A0E8E6 /* ViewController.swift */; };
 		666FE0B71EDBD87100A0E8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666FE0B51EDBD87100A0E8E6 /* Main.storyboard */; };
 		666FE0B91EDBD87100A0E8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 666FE0B81EDBD87100A0E8E6 /* Assets.xcassets */; };
 		666FE0BC1EDBD87100A0E8E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666FE0BA1EDBD87100A0E8E6 /* LaunchScreen.storyboard */; };
+		F44B906A2CAC12D55E0FC44E /* libPods-RGInputBarExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7CF32EAC5E6E9E4FBD96A07 /* libPods-RGInputBarExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		286202D42E1204A2DB209FC6 /* Pods-RGInputBarExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RGInputBarExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample.debug.xcconfig"; sourceTree = "<group>"; };
+		47F764D4222E122400CB91A9 /* RGInputBar-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RGInputBar-Bridge.h"; sourceTree = "<group>"; };
 		666FE0AE1EDBD87100A0E8E6 /* RGInputBarExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGInputBarExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		666FE0B11EDBD87100A0E8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		666FE0B31EDBD87100A0E8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +26,7 @@
 		666FE0BB1EDBD87100A0E8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		666FE0BD1EDBD87100A0E8E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A35F7652E6751C2BF4F934E /* Pods-RGInputBarExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RGInputBarExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample.release.xcconfig"; sourceTree = "<group>"; };
-		B61D0413A0B35DC4ADEE1E27 /* Pods_RGInputBarExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RGInputBarExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7CF32EAC5E6E9E4FBD96A07 /* libPods-RGInputBarExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RGInputBarExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39A66DB1E8CA1E8302B111C6 /* Pods_RGInputBarExample.framework in Frameworks */,
+				F44B906A2CAC12D55E0FC44E /* libPods-RGInputBarExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +68,7 @@
 				666FE0B81EDBD87100A0E8E6 /* Assets.xcassets */,
 				666FE0BA1EDBD87100A0E8E6 /* LaunchScreen.storyboard */,
 				666FE0BD1EDBD87100A0E8E6 /* Info.plist */,
+				47F764D4222E122400CB91A9 /* RGInputBar-Bridge.h */,
 			);
 			path = RGInputBarExample;
 			sourceTree = "<group>";
@@ -83,7 +85,7 @@
 		A2E42363A2496500B656181C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B61D0413A0B35DC4ADEE1E27 /* Pods_RGInputBarExample.framework */,
+				D7CF32EAC5E6E9E4FBD96A07 /* libPods-RGInputBarExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,8 +101,7 @@
 				666FE0AA1EDBD87100A0E8E6 /* Sources */,
 				666FE0AB1EDBD87100A0E8E6 /* Frameworks */,
 				666FE0AC1EDBD87100A0E8E6 /* Resources */,
-				AF71A1027F7AB6554EDA230A /* [CP] Embed Pods Frameworks */,
-				B7FAC3294C4D5265295A914C /* [CP] Copy Pods Resources */,
+				27C7DE65F31D6655D52BA60A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -118,11 +119,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = ruogoo;
 				TargetAttributes = {
 					666FE0AD1EDBD87100A0E8E6 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = J4EPFU5LD8;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -159,49 +162,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		27C7DE65F31D6655D52BA60A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample-resources.sh",
+				"${PODS_ROOT}/../../../RGInputBar/RGInputView.xib",
+				"${PODS_ROOT}/../../../RGInputBar/RGInputBar.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RGInputView.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RGInputBar.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB1D2604B19F3640BC976320 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RGInputBarExample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AF71A1027F7AB6554EDA230A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7FAC3294C4D5265295A914C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RGInputBarExample/Pods-RGInputBarExample-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -248,15 +248,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -279,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -299,15 +307,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -324,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -338,11 +354,15 @@
 			baseConfigurationReference = 286202D42E1204A2DB209FC6 /* Pods-RGInputBarExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J4EPFU5LD8;
 				INFOPLIST_FILE = RGInputBarExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruogoo.RGInputBarExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "RGInputBarExample/RGInputBar-Bridge.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -351,11 +371,15 @@
 			baseConfigurationReference = 8A35F7652E6751C2BF4F934E /* Pods-RGInputBarExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J4EPFU5LD8;
 				INFOPLIST_FILE = RGInputBarExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruogoo.RGInputBarExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "RGInputBarExample/RGInputBar-Bridge.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -378,6 +402,7 @@
 				666FE0C21EDBD87100A0E8E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -16,10 +16,12 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '9.0'
   s.requires_arc = true
-  s.dependency  'UITextView+Placeholder'
 
   s.source_files = 'RGInputBar/**/*.{h,m}'
   s.public_header_files = 'RGInputBar/**/*.h'
   s.resource = 'RGInputBar/**/*.{bundle,xib}'
+
+  s.dependency  'UITextView+Placeholder'
+  s.dependency  'Masonry'
 
 end

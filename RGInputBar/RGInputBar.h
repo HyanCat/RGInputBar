@@ -33,14 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)rg_inputBar:(RGInputBar *)inputBar didTouchedIconAtIndex:(NSUInteger)index;
 
-/**
- When the send button did touched.
-
- @param inputBar The InputBar target.
- @param sendButton The send button.
- */
-- (void)rg_inputBar:(RGInputBar *)inputBar didTouchedSendButton:(UIButton *)sendButton;
-
 @end
 
 /**
@@ -57,7 +49,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *textColor UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, copy) NSString *placeholder UI_APPEARANCE_SELECTOR;
-@property (nonatomic, copy) NSString *content;
 
 @property (nonatomic, weak, nullable) id <RGInputBarDelegate> inputDelegate;
 
