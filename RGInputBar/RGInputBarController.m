@@ -65,17 +65,13 @@
     [self.actions addObject:action];
 }
 
-- (void)attachToViewController:(UIViewController *)controller
+- (void)attachToViewController:(UIViewController *)controller atPosition:(RGInputBarPosition)position
 {
     self.controller = controller;
-    RGInputBar *inputBar = [[RGInputBar alloc] init];
-    inputBar.inputDelegate = self;
-    [controller.view addSubview:inputBar];
-    [inputBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.mas_equalTo(0);
-    }];
-    inputBar.actions = self.actions;
-    self.inputBar = inputBar;
+
+    if (position == RGInputBarPositionBottom) {
+        [self attachInputBar];
+    }
 }
 
 - (void)showInputView
@@ -108,6 +104,18 @@
 {
     self.content = nil;
     self.inputViewController.content = nil;
+}
+
+- (void)attachInputBar
+{
+    RGInputBar *inputBar = [[RGInputBar alloc] init];
+    inputBar.inputDelegate = self;
+    [self.controller.view addSubview:inputBar];
+    [inputBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+    }];
+    inputBar.actions = self.actions;
+    self.inputBar = inputBar;
 }
 
 #pragma mark - Delegate

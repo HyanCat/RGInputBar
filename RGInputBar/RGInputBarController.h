@@ -18,10 +18,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+typedef NS_ENUM(NSInteger, RGInputBarPosition) {
+    RGInputBarPositionNone = 0,
+    RGInputBarPositionBottom,
+};
+
 @class RGInputBar;
 @interface RGInputBarController : NSObject
 
-@property (nonatomic, weak, readonly) RGInputBar *inputBar;
+@property (nonatomic, weak, nullable, readonly) RGInputBar *inputBar;
 
 @property (nonatomic, copy, nullable) NSString *content;
 @property (nonatomic, copy, nullable) NSString *atUserName;
@@ -30,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addAction:(RGInputActionItem *)action;
 
-- (void)attachToViewController:(UIViewController *)controller;
+- (void)attachToViewController:(UIViewController *)controller atPosition:(RGInputBarPosition)position;
 
 - (void)showInputView;
 - (void)dismissInputView;
