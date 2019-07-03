@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class RGInputActionItem;
 @class RGInputBar;
 
 /**
@@ -25,14 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)rg_inputBarDidTouched:(RGInputBar *)inputBar;
 
-/**
- When the icons did touched.
-
- @param inputBar The InputBar target.
- @param index The index which icon did touched.
- */
-- (void)rg_inputBar:(RGInputBar *)inputBar didTouchedIconAtIndex:(NSUInteger)index;
-
 @end
 
 /**
@@ -40,11 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RGInputBar : UIView
 
-/**
- Icons array.
- A simple pencil icon will be place at first by default.
- */
-@property (nonatomic, copy) NSArray <UIImage *> *icons;
+@property (nonatomic, copy) NSArray <RGInputActionItem *> *actions;
 @property (nonatomic, copy) NSString *actionItemTitle;
 @property (nonatomic, strong) UIColor *textColor UI_APPEARANCE_SELECTOR;
 

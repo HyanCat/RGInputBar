@@ -7,8 +7,9 @@
 
 #import "RGInputBarController.h"
 #import "RGInputBar.h"
-#import "RGInputView.h"
+#import "RGInputViewController.h"
 #import <Masonry/Masonry.h>
+#import "RGInputActionItem.h"
 
 @interface _RGInputBarContentView : UIView
 
@@ -28,129 +29,106 @@
 
 @end
 
-@interface RGInputBarController () <RGInputBarDelegate, RGInputViewDelegate>
+@interface RGInputBarController () <RGInputBarDelegate>
+
+@property (nonatomic, weak) __kindof UIViewController *controller;
 
 /**
  * Input bar is used for output.
  */
 @property (nonatomic, weak, readwrite) RGInputBar *inputBar;
 
+@property (nonatomic, strong) NSMutableArray <RGInputActionItem *> *actions;
+
 /**
  * Input view is used for input.
  */
-@property (nonatomic, weak, readwrite) RGInputView *inputView;
+@property (nonatomic, weak, readwrite) RGInputViewController *inputViewController;
 
 @end
 
 @implementation RGInputBarController
-@dynamic content;
 
-- (void)dealloc
+- (instancetype)init
 {
-    [self.inputView removeObserver:self forKeyPath:@"content"];
+    self = [super init];
+    if (self) {
+        _actions = [NSMutableArray array];
+    }
+    return self;
 }
 
-- (void)loadView
+#pragma mark - Public Methods
+
+- (void)addAction:(RGInputActionItem *)action
 {
-    _RGInputBarContentView *view = [[_RGInputBarContentView alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    self.view = view;
+    [self.actions addObject:action];
 }
 
-- (void)viewDidLoad
+- (void)attachToViewController:(UIViewController *)controller
 {
-    [super viewDidLoad];
-    _automaticallyShowInputViewWhenAtUser = YES;
-
+    self.controller = controller;
     RGInputBar *inputBar = [[RGInputBar alloc] init];
     inputBar.inputDelegate = self;
-    self.inputBar = inputBar;
-    [self.view addSubview:inputBar];
-
-    NSBundle *bundle = [NSBundle bundleForClass:[RGInputBar class]];
-    RGInputView *inputView = [bundle loadNibNamed:NSStringFromClass(RGInputView.class)
-                                            owner:self
-                                          options:nil].firstObject;
-    inputView.frame = self.view.bounds;
-    inputView.inputDelegate = self;
-    self.inputView = inputView;
-    [self.view addSubview:self.inputView];
-
+    [controller.view addSubview:inputBar];
     [inputBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
+        make.left.right.bottom.mas_equalTo(0);
     }];
-
-    [self.inputView addObserver:self
-                     forKeyPath:@"content"
-                        options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-                        context:nil];
+    inputBar.actions = self.actions;
+    self.inputBar = inputBar;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)showInputView
 {
-    [self.parentViewController touchesBegan:touches withEvent:event];
+    RGInputViewController *inputViewController = [[RGInputViewController alloc] init];
+    inputViewController.delegate = self;
+    inputViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    inputViewController.content = self.content;
+    [self.controller presentViewController:inputViewController animated:NO completion:nil];
+    self.inputViewController = inputViewController;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+- (void)dismissInputView
 {
-    if (object != self.inputView) {
-        return;
+    [self.inputViewController hideAnimated];
+}
+
+- (void)resetActions
+{
+    [self.actions removeAllObjects];
+    [self reloadActions];
+}
+
+- (void)reloadActions
+{
+    self.inputBar.actions = self.actions;
+}
+
+- (void)clear
+{
+    self.content = nil;
+    self.inputViewController.content = nil;
+}
+
+#pragma mark - Delegate
+
+- (void)rg_inputViewController:(RGInputViewController *)controller
+              didChangeContent:(NSString *)content
+{
+    self.content = content;
+}
+
+- (void)rg_inputViewControllerDidConfirm:(RGInputViewController *)controller
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputBarController:sendInput:)]) {
+        __weak typeof(self) weakSelf = self;
+        [self.delegate rg_inputBarController:self sendInput:self.content];
     }
-    if ([keyPath isEqualToString:@"content"]) {
-        id newValue = [change objectForKey:NSKeyValueChangeNewKey];
-        id oldValue = [change objectForKey:NSKeyValueChangeOldKey];
-        if (newValue != oldValue) {
-            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateContent) object:nil];
-            [self performSelectorOnMainThread:@selector(updateContent) withObject:nil waitUntilDone:NO];
-        }
-    }
-}
-
-- (void)setContent:(NSString *)content
-{
-    self.inputView.content = content;
-}
-
-- (NSString *)content
-{
-    return self.inputView.content;
-}
-
-- (void)setAtUserName:(NSString *)atUserName
-{
-    _atUserName = atUserName;
-    self.inputView.replyTipTitle = _atUserName;
-    if (self.automaticallyShowInputViewWhenAtUser && _atUserName && _atUserName.length > 0) {
-        [self.inputView show];
-    }
-}
-
-- (void)updateContent
-{
-//    self.inputBar.content = self.inputView.content;
 }
 
 - (void)rg_inputBarDidTouched:(RGInputBar *)inputBar
 {
-    [self.inputView show];
-}
-
-- (void)rg_inputView:(RGInputView *)inputView didTouchedCancelButton:(UIButton *)cancelButton
-{
-    [inputView dismiss];
-}
-
-- (void)rg_inputView:(RGInputView *)inputView didTouchedSendButton:(nonnull UIButton *)sendButton
-{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rg_inputBarController:didSendInput:)]) {
-        [self.delegate rg_inputBarController:self didSendInput:self.content];
-    }
-}
-
-- (void)rg_inputView:(RGInputView *)inputView didTouchedReplyTipButton:(UIButton *)replyTipButton
-{
-    _atUserName = nil;
-    inputView.replyTipTitle = nil;
+    [self showInputView];
 }
 
 @end

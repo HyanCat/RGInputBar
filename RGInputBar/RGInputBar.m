@@ -8,6 +8,8 @@
 #import "RGInputBar.h"
 #import <Masonry/Masonry.h>
 #import "RGRoundedTextLabel.h"
+#import "RGInputViewController.h"
+#import "RGInputActionItem.h"
 
 #define RGINPUTBAR_ICON_BUTTON_TAG 1800
 
@@ -41,7 +43,7 @@
 
 @end
 
-@interface RGInputBar ()
+@interface RGInputBar () <RGInputViewControllerDelegate>
 
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIVisualEffectView *blurView;
@@ -87,12 +89,12 @@
     [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(0);
-        make.height.mas_equalTo(49);
         if (@available(iOS 11.0, *)) {
             make.bottom.equalTo(self.mas_safeAreaLayoutGuideBottom);
         } else {
             make.bottom.mas_equalTo(0);
         }
+        make.height.mas_equalTo(49);
     }];
     self.contentView = contentView;
 
@@ -135,17 +137,16 @@
     self.textLabel.textColor = textColor;
 }
 
-- (void)setIcons:(NSArray<UIImage *> *)icons
+- (void)setActions:(NSArray<RGInputActionItem *> *)actions
 {
-    _icons = icons;
+    _actions = actions.copy;
 
     [self.actionsView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj removeFromSuperview];
     }];
-
-    [icons enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [actions enumerateObjectsUsingBlock:^(RGInputActionItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *item = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        [item setImage:obj forState:UIControlStateNormal];
+        [item setImage:obj.icon forState:UIControlStateNormal];
         [item addTarget:self action:@selector(iconButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
         item.tag = RGINPUTBAR_ICON_BUTTON_TAG + idx;
         [self.actionsView addSubview:item];
@@ -162,8 +163,11 @@
 - (void)iconButtonTouched:(UIButton *)sender
 {
     NSUInteger idx = sender.tag - RGINPUTBAR_ICON_BUTTON_TAG;
-    if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBar:didTouchedIconAtIndex:)]) {
-        [self.inputDelegate rg_inputBar:self didTouchedIconAtIndex:idx];
+    if (idx < self.actions.count) {
+        RGInputActionItem *action = self.actions[idx];
+        if (action.handler) {
+            action.handler();
+        }
     }
 }
 
@@ -171,6 +175,8 @@
 {
     if (self.inputDelegate && [self.inputDelegate respondsToSelector:@selector(rg_inputBarDidTouched:)]) {
         [self.inputDelegate rg_inputBarDidTouched:self];
+    } else {
+
     }
 }
 

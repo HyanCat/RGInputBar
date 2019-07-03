@@ -7,27 +7,38 @@
 
 #import <UIKit/UIKit.h>
 
+@class RGInputActionItem;
 NS_ASSUME_NONNULL_BEGIN
 
 @class RGInputBarController;
 @protocol RGInputBarControllerDelegate <NSObject>
 
 @optional
-- (void)rg_inputBarController:(RGInputBarController *)controller didSendInput:(NSString  * _Nullable)content;
+- (void)rg_inputBarController:(RGInputBarController *)controller sendInput:(NSString  * _Nullable)content;
 
 @end
 
 @class RGInputBar;
-@class RGInputView;
-@interface RGInputBarController : UIViewController
+@interface RGInputBarController : NSObject
 
 @property (nonatomic, weak, readonly) RGInputBar *inputBar;
-@property (nonatomic, weak, readonly) RGInputView *inputView;
 
 @property (nonatomic, copy, nullable) NSString *content;
 @property (nonatomic, copy, nullable) NSString *atUserName;
-@property (nonatomic, assign) BOOL automaticallyShowInputViewWhenAtUser;    // default YES
+
 @property (nonatomic, weak) id <RGInputBarControllerDelegate> delegate;
+
+- (void)addAction:(RGInputActionItem *)action;
+
+- (void)attachToViewController:(UIViewController *)controller;
+
+- (void)showInputView;
+- (void)dismissInputView;
+
+- (void)resetActions;
+- (void)reloadActions;
+
+- (void)clear;
 
 @end
 
