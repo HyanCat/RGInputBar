@@ -76,10 +76,9 @@
 
 - (void)showInputView
 {
-    RGInputViewController *inputViewController = [[RGInputViewController alloc] init];
+    RGInputViewController *inputViewController = [[RGInputViewController alloc] initWithContent:self.content];
     inputViewController.delegate = self;
     inputViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    inputViewController.content = self.content;
     [self.controller presentViewController:inputViewController animated:NO completion:nil];
     self.inputViewController = inputViewController;
 }
@@ -103,7 +102,7 @@
 - (void)clear
 {
     self.content = nil;
-    self.inputViewController.content = nil;
+    [self.inputViewController clearContent];
 }
 
 - (void)attachInputBar

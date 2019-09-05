@@ -6,7 +6,6 @@
 //
 
 #import "RGInputViewController.h"
-#import "RGInputView.h"
 #import "RGInputKeyboardLayoutGuide.h"
 
 @interface RGInputViewController () <UITextViewDelegate>
@@ -17,11 +16,22 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 
+@property (nonatomic, strong, readwrite) NSString *content;
+
 @property (nonatomic, strong) RGInputKeyboardLayoutGuide *guide;
 
 @end
 
 @implementation RGInputViewController
+
+- (instancetype)initWithContent:(NSString *)content
+{
+    self = [super init];
+    if (self) {
+        self.content = content;
+    }
+    return self;
+}
 
 - (void)loadView
 {
@@ -50,12 +60,6 @@
 
     [self showAnimated];
     [self.inputTextView becomeFirstResponder];
-}
-
-- (void)setContent:(NSString *)content
-{
-    _content = content;
-    self.inputTextView.text = content;
 }
 
 #pragma mark Actions
@@ -98,6 +102,11 @@
     } completion:^(BOOL finished) {
         [self dismissViewControllerAnimated:NO completion:nil];
     }];
+}
+
+- (void)clearContent
+{
+    self.content = nil;
 }
 
 #pragma mark - Delegate

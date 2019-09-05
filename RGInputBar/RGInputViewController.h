@@ -21,12 +21,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RGInputViewController : UIViewController
 
-@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong, readonly) NSString *content;
 
 @property (nonatomic, weak, nullable) id <RGInputViewControllerDelegate> delegate;
 
+- (instancetype)initWithContent:(NSString * _Nullable)content;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
+
 - (void)showAnimated;
 - (void)hideAnimated;
+
+- (void)clearContent;
 
 @end
 
